@@ -11,8 +11,8 @@ This is a website to track workout activities. User can add,filter,view and visu
 1. Cloning the repository
 ```bash
 git clone https://github.com/RonakSurana-2001/Fyle-Angular.git
-```
 cd Fyle-Angular
+```
 2. Install Dependencies
 ```bash
 npm install

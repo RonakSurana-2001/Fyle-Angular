@@ -9,19 +9,22 @@ This is a website to track workout activities. User can add,filter,view and visu
 ## Video Demonstration
 ## Running Locally
 1. Cloning the repository
-``bash``
+```bash
 git clone https://github.com/RonakSurana-2001/Fyle-Angular.git
+```
 cd Fyle-Angular
 2. Install Dependencies
-``bash``
+```bash
 npm install
+```
 3. Run the project
-``bash``
+```bash
 ng serve --open
-
+```
 You can see Project on http://localhost:4200
 4. Getting Code Coverage Report  
-``bash``
+```bash
 ng test --no-watch --code-coverage
+```
 Then a coverage folder will be created. Inside this open index.html in browser you will get report generated.   
 Sample Screenshot : 

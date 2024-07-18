@@ -21,7 +21,8 @@ npm install
 ```bash
 ng serve --open
 ```
-You can see Project on http://localhost:4200
+You can see Project on http://localhost:4200  
+
 4. Getting Code Coverage Report  
 ```bash
 ng test --no-watch --code-coverage

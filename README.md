@@ -16,6 +16,11 @@ This is a website to track workout activities. User can add,filter,view and visu
    ![ChartPage](https://github.com/user-attachments/assets/d4ba5416-1e6f-4904-ae32-0a2a36ba6da7)
 
 ## Video Demonstration
+
+
+https://github.com/user-attachments/assets/ab1d6279-4d26-423d-9254-00c92e645cac
+
+
 ## Running Locally
 1. Cloning the repository
 ```bash

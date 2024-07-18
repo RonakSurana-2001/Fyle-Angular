@@ -1,12 +1,12 @@
 <div class="flex flex-row justify-center items-center p-10">
-    <form class="flex flex-col space-y-5  p-8 rounded-md  text-xl w-1/2 border-2" (ngSubmit)="onSubmit()">
+    <form class="flex flex-col space-y-5  p-8 rounded-md  text-xl w-1/2 border-2" (ngSubmit)="onSubmit()" [formGroup]="filterForm">
         <mat-form-field floatLabel="auto">
             <mat-label>User Name</mat-label>
-            <input matInput [(ngModel)]="username" name="username" required/>
+            <input matInput  name="username" formControlName="username" required/>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Workout Type</mat-label>
-            <mat-select [(ngModel)]="workoutType" name="workoutType" required>
+            <mat-select name="workoutType" formControlName="workoutType" required>
                 <mat-option value="Cycling">Cycling</mat-option>
                 <mat-option value="Running">Running</mat-option>
                 <mat-option value="Aerobics">Aerobics</mat-option>
@@ -15,7 +15,7 @@
         </mat-form-field>
         <mat-form-field floatLabel="auto">
             <mat-label>Workout Minutes</mat-label>
-            <input matInput [(ngModel)]=workoutMinutes name="workoutMinutes" required/>
+            <input matInput  name="workoutMinutes" formControlName=workoutMinutes required/>
         </mat-form-field>
         <button mat-stroked-button color="primary" type="submit">Add Workout</button>
     </form>

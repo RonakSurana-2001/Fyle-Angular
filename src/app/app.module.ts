@@ -9,7 +9,7 @@ import { ViewAllComponent } from './Components/view-all/view-all.component';
 import { ViewChartComponent } from './Components/view-chart/view-chart.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule  } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { ChartModule } from 'primeng/chart';

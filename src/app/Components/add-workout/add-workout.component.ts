@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl,FormGroup, Validators } from '@angular/forms';
 import { Workout } from 'src/interfaces/workout';
+import { WorkoutService } from '../../services/workout.service';
 
 @Component({
   selector: 'app-add-workout',
@@ -15,30 +16,40 @@ export class AddWorkoutComponent implements OnInit {
   workoutType: string = '';
   workoutMinutes: number=0;
 
-  constructor() {
+  constructor(private workoutService: WorkoutService) {
   }
+
+  filterForm = new FormGroup({
+    username: new FormControl(''),
+    workoutType: new FormControl(''),
+    workoutMinutes:new FormControl(),
+  });
 
   ngOnInit(): void {
     const storedData: Workout[] = JSON.parse(
       localStorage.getItem('userData') || '[]'
     );
     this.workouts = storedData.length ? storedData : null;
+    this.workouts = this.workoutService.getWorkouts();
   }
 
   onSubmit() {
+    const formValue = this.filterForm.value;
     const storedData=localStorage.getItem("userData")
     let userData:Workout[]=storedData?JSON.parse(storedData):[]
-    let user = userData.find((u: any) => u.name === this.username);
+    let user = userData.find((u: any) => u.name === formValue.username);
     if(!user){
       user={
         id:userData.length+1,
-        name:this.username,
-        workoutlist:[{type:this.workoutType,time:this.workoutMinutes}],
+        name:formValue.username || '',
+        workoutlist:[{type:formValue.workoutType || '',time:formValue.workoutMinutes}],
       }
       userData.push(user)
+      this.workoutService.addWorkout(formValue.username || '', formValue.workoutType || '', formValue.workoutMinutes);
     }
     else{
-      user.workoutlist.push({type:this.workoutType,time:this.workoutMinutes})
+      user.workoutlist.push({type:formValue.workoutType || '',time:formValue.workoutMinutes})
+      this.workoutService.addWorkout(formValue.username || '', formValue.workoutType || '', formValue.workoutMinutes);
     }
     localStorage.setItem("userData",JSON.stringify(userData))
   }

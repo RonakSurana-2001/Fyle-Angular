@@ -1,4 +1,4 @@
-# Fyde Assignment
+# Fyle Assignment
 Health Challenge Tracker  
 This is a website to track workout activities. User can add,filter,view and visualize the workout progress.  
 ## Features  

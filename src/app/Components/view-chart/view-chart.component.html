@@ -1,0 +1,12 @@
+<div class="flex flex-row h-max bg-slate-200 p-5 space-x-2">
+    <div class="w-1/4 flex flex-col p-2 border-none rounded-2xl bg-white">
+        <div *ngFor="let name of usernames;let i = index" class=" text-black p-3 border-b-2 font-semibold" style="cursor:pointer">
+            <div (click)="getUserDetails(i)">{{name}}</div>
+        </div>
+    </div>
+    <div class="card w-3/4 bg-white rounded-lg flex flex-row justify-center items-center">
+        <div class="p-3">
+            <p-chart type="bar" [data]="basicData" width="400" height="400" [options]="basicOptions"></p-chart>
+        </div>
+    </div>
+</div>

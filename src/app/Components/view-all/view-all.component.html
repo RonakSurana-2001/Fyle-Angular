@@ -1,0 +1,59 @@
+<div class="h-full flex flex-col items-center p-3">
+    <div class="p-3">
+        <form [formGroup]="filterForm" class="gap-9 flex flex-row">
+            <div>
+                <mat-form-field name="searchname">
+                    <input matInput placeholder="Search By Name" class="w-full" formControlName="searchname" />
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Filter by Workout Type</mat-label>
+                    <mat-select formControlName="searchtype">
+                        <mat-option>All</mat-option>
+                        <mat-option value="Cycling">Cycling</mat-option>
+                        <mat-option value="Running">Running</mat-option>
+                        <mat-option value="Aerobics">Aerobics</mat-option>
+                        <mat-option value="Swimming">Swimming</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+    <table class="border-collapse">
+        <thead class="border-2">
+            <th class="p-8">Name</th>
+            <th class="p-8">Workouts</th>
+            <th class="p-8">Number of Workouts</th>
+            <th class="p-8">Total Workout Minutes</th>
+        </thead>
+        <tbody>
+            <tr *ngIf="userData?.length === 0">
+                <td class="col-span-4">No Data to display</td>
+            </tr>
+        </tbody>
+        <tbody *ngFor="let user of paginatedData">
+            <tr class="border-2">
+                <td class="p-8">{{user.name}}</td>
+                <td class="p-8">{{getAllWorkoutTypes(user.workoutlist)}}</td>
+                <td class="p-8">{{user.workoutlist.length}}</td>
+                <td class="p-8">{{totalWorkoutMinutes(user.workoutlist)}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="mt-6 flex items-center justify-center gap-3">
+        <button class="p-2 border border-black hover:bg-black transition-all hover:text-white" (click)="prevPage()"
+            [disabled]="currentPage === 1">Previous</button>
+        <button class="p-2 border border-black hover:bg-black transition-all hover:text-white" (click)="nextPage()"
+            [disabled]="currentPage === totalPages">Next</button>
+
+        <p>Results per page: </p>
+        <select name="noOfPages" id="noOfPages" [(ngModel)]="itemsPerPage" (change)="changeItemsPerPage($event)">
+            <option value="2">2</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+    </div>
+</div>

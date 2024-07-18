@@ -1,5 +1,5 @@
 <div class="flex flex-row justify-center items-center p-10">
-    <form class="flex flex-col space-y-5  p-8 rounded-md  text-xl w-1/2 border-2" (ngSubmit)="onSubmit()" [formGroup]="filterForm">
+    <form class="flex flex-col space-y-5  p-8 rounded-md  text-xl w-1/2 border-2 max-md:w-full" (ngSubmit)="onSubmit()" [formGroup]="filterForm">
         <mat-form-field floatLabel="auto">
             <mat-label>User Name</mat-label>
             <input matInput  name="username" formControlName="username" required/>

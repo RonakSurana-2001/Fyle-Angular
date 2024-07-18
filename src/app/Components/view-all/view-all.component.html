@@ -1,6 +1,6 @@
-<div class="h-full flex flex-col items-center p-3">
+<div class="h-full flex flex-col items-center p-3 max-md:flex-col">
     <div class="p-3">
-        <form [formGroup]="filterForm" class="gap-9 flex flex-row">
+        <form [formGroup]="filterForm" class="gap-9 flex flex-row max-md:flex-col">
             <div>
                 <mat-form-field name="searchname">
                     <input matInput placeholder="Search By Name" class="w-full" formControlName="searchname" />
@@ -20,28 +20,30 @@
             </div>
         </form>
     </div>
-    <table class="border-collapse">
-        <thead class="border-2">
-            <th class="p-8">Name</th>
-            <th class="p-8">Workouts</th>
-            <th class="p-8">Number of Workouts</th>
-            <th class="p-8">Total Workout Minutes</th>
-        </thead>
-        <tbody>
-            <tr *ngIf="userData?.length === 0">
-                <td class="col-span-4">No Data to display</td>
-            </tr>
-        </tbody>
-        <tbody *ngFor="let user of paginatedData">
-            <tr class="border-2">
-                <td class="p-8">{{user.name}}</td>
-                <td class="p-8">{{getAllWorkoutTypes(user.workoutlist)}}</td>
-                <td class="p-8">{{user.workoutlist.length}}</td>
-                <td class="p-8">{{totalWorkoutMinutes(user.workoutlist)}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="mt-6 flex items-center justify-center gap-3">
+    <div class="rounded-lg overflow-auto w-full flex justify-center">
+        <table class="border-collapse">
+            <thead class="border-2">
+                <th class="p-8">Name</th>
+                <th class="p-8">Workouts</th>
+                <th class="p-8">Number of Workouts</th>
+                <th class="p-8">Total Workout Minutes</th>
+            </thead>
+            <tbody>
+                <tr *ngIf="userData?.length === 0">
+                    <td class="col-span-4">No Data to display</td>
+                </tr>
+            </tbody>
+            <tbody *ngFor="let user of paginatedData">
+                <tr class="border-2">
+                    <td class="p-8">{{user.name}}</td>
+                    <td class="p-8">{{getAllWorkoutTypes(user.workoutlist)}}</td>
+                    <td class="p-8">{{user.workoutlist.length}}</td>
+                    <td class="p-8">{{totalWorkoutMinutes(user.workoutlist)}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="mt-6 flex items-center justify-center gap-3 max-md:flex-col">
         <button class="p-2 border border-black hover:bg-black transition-all hover:text-white" (click)="prevPage()"
             [disabled]="currentPage === 1">Previous</button>
         <button class="p-2 border border-black hover:bg-black transition-all hover:text-white" (click)="nextPage()"
